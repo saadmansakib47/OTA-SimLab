@@ -23,6 +23,16 @@ export const AlgorithmSelector = ({ algorithm, onAlgorithmChange }) => {
       label: "Token Ring",
       description: "Token-based coordination",
     },
+    {
+      value: "lamport",
+      label: "Lamport's Algorithm",
+      description: "Logical clocks for ordering",
+    },
+    {
+      value: "ricart-agrawala",
+      label: "Ricart-Agrawala Algorithm",
+      description: "Distributed mutual exclusion",
+    },
   ]
 
   return (

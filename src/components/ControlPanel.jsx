@@ -20,6 +20,8 @@ export const ControlPanel = ({
     { value: "mutex", label: "Mutex-Based" },
     { value: "observer", label: "Observer Pattern" },
     { value: "token-ring", label: "Token Ring" },
+    { value: "lamport", label: "Lamport's Algorithm" },
+    { value: "ricart-agrawala", label: "Ricart-Agrawala Algorithm" },
   ]
 
   return (
