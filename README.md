@@ -113,20 +113,9 @@ Data & wiring notes
 - Not production-grade networking — it simulates behavior in-memory for visualization and experiments only.
 - Some features are duplicated between the legacy and Next.js front-ends; choose one to iterate on for larger refactors.
 
-## Want help or changes?
-
-- I can add quick `dev:next` / `build:next` scripts to `package.json`.
-- I can add a short CONTRIBUTING.md or example algorithm template file.
-
----
-
-If you'd like I can now add the `dev:next` scripts to `package.json` or create an `ALGORITHM_TEMPLATE.md` file to make it even easier to add new algorithms.
-
 ## Scripts in `package.json`
 
 This repo's `package.json` includes these scripts (legacy CRA): `start`, `build`, `test`, `eject` (uses `react-scripts`).
-
-Tip: I can add convenient scripts like `dev:next`, `build:next`, `start:next` if you want.
 
 ## Troubleshooting
 
