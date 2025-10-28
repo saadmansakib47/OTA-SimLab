@@ -6,6 +6,7 @@ import { ControlPanel } from "./components/ControlPanel"
 import { MetricsPanel } from "./components/MetricsPanel"
 import { AlgorithmSelector } from "./components/AlgorithmSelector"
 import { NodeManagementPanel } from "./components/NodeManagementPanel"
+import { DarkModeToggle } from "./components/DarkModeToggle"
 
 const generateNodes = (count) => {
   return Array.from({ length: count }, (_, i) => ({
@@ -103,18 +104,21 @@ export default function App() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 dark:from-slate-50 dark:via-slate-100 dark:to-slate-50 p-6 transition-colors duration-300">
       {/* Header */}
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-white mb-2">OTA Update Visual Simulator</h1>
-        <p className="text-slate-400">Visualize Over-The-Air updates in a distributed network</p>
+      <div className="mb-8 text-center relative">
+        <div className="absolute top-0 right-0">
+          <DarkModeToggle />
+        </div>
+        <h1 className="text-4xl font-bold text-white dark:text-slate-900 mb-2">OTA Update Visual Simulator</h1>
+        <p className="text-slate-400 dark:text-slate-600">Visualize Over-The-Air updates in a distributed network</p>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Simulation Field */}
         <div>
-          <h2 className="text-xl font-semibold text-white mb-3">Simulation</h2>
+          <h2 className="text-xl font-semibold text-white dark:text-slate-900 mb-3">Simulation</h2>
           <SimulationField
             nodes={nodes}
             isRunning={isRunning}
@@ -127,7 +131,7 @@ export default function App() {
         {/* Control, Algorithm, and Node Management */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-2">
-            <h2 className="text-xl font-semibold text-white mb-3">Settings</h2>
+            <h2 className="text-xl font-semibold text-white dark:text-slate-900 mb-3">Settings</h2>
             <ControlPanel
               latency={latency}
               setLatency={setLatency}
@@ -142,18 +146,18 @@ export default function App() {
             />
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-white mb-3">Algorithm</h2>
+            <h2 className="text-xl font-semibold text-white dark:text-slate-900 mb-3">Algorithm</h2>
             <AlgorithmSelector algorithm={algorithm} onAlgorithmChange={setAlgorithm} />
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-white mb-3">Nodes</h2>
+            <h2 className="text-xl font-semibold text-white dark:text-slate-900 mb-3">Nodes</h2>
             <NodeManagementPanel nodes={nodes} onNodesChange={setNodes} onReset={handleReset} />
           </div>
         </div>
 
         {/* Metrics Panel */}
         <div>
-          <h2 className="text-xl font-semibold text-white mb-3">Metrics</h2>
+          <h2 className="text-xl font-semibold text-white dark:text-slate-900 mb-3">Metrics</h2>
           <MetricsPanel
             metrics={metrics}
             onSaveUpdate={handleSaveUpdate}

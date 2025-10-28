@@ -1,6 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "@/src/index.css"
+import { ThemeProvider } from '@/components/theme-provider'
+import DarkToggle from '@/components/ui/dark-toggle'
 
 export const metadata: Metadata = {
   title: "OTA Update Visual Simulator",
@@ -15,7 +17,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <body className="bg-background text-foreground">
+          <div className="min-h-screen">
+            <div className="fixed top-4 right-4 z-50">
+              <DarkToggle />
+            </div>
+            {children}
+          </div>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }
