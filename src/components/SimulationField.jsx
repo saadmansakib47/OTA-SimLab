@@ -175,11 +175,11 @@ export const SimulationField = ({ nodes, isRunning, onNodesUpdate, latency, fail
   }, [draggedNodeId, draggedOTA, dragOffset])
 
   return (
-    <Card className="relative w-full bg-slate-950 border-slate-700 overflow-hidden" style={{ height: "600px" }}>
+    <Card className="relative w-full border-slate-700/50 dark:border-slate-300/50 overflow-hidden" style={{ height: "600px" }}>
       {/* Simulation Container */}
       <div
         ref={containerRef}
-        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-slate-700 rounded-lg bg-slate-900/50"
+        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-slate-600/40 dark:border-slate-400/40 rounded-2xl bg-gradient-to-br from-slate-800/60 via-slate-900/60 to-slate-800/60 dark:from-slate-100/60 dark:via-slate-50/60 dark:to-slate-100/60 backdrop-blur-sm shadow-2xl"
         style={{ width: `${CONTAINER_WIDTH}px`, height: `${CONTAINER_HEIGHT}px` }}
       >
         {/* Connection Lines */}
@@ -197,7 +197,8 @@ export const SimulationField = ({ nodes, isRunning, onNodesUpdate, latency, fail
                 y1={centerY}
                 x2={nodeX}
                 y2={nodeY}
-                stroke="rgba(59, 130, 246, 0.3)"
+                stroke="rgba(99, 102, 241, 0.4)"
+                className="dark:stroke-blue-400/40"
                 strokeWidth="2"
                 strokeDasharray="5,5"
               />
@@ -245,8 +246,13 @@ export const SimulationField = ({ nodes, isRunning, onNodesUpdate, latency, fail
       </div>
 
       {/* Info Text */}
-      <div className="absolute bottom-4 left-4 text-xs text-slate-400">
-        <p>Drag nodes or OTA Center to reposition • Total nodes: {nodes.length}</p>
+      <div className="absolute bottom-4 left-4 px-4 py-2 bg-slate-800/60 dark:bg-white/60 backdrop-blur-md rounded-xl border border-slate-700/50 dark:border-slate-300/50 shadow-lg">
+        <p className="text-xs font-medium text-slate-300 dark:text-slate-700 flex items-center gap-2">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Drag nodes or OTA Center to reposition • Total: <span className="font-bold text-blue-400 dark:text-blue-600">{nodes.length}</span> nodes
+        </p>
       </div>
     </Card>
   )
